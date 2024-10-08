@@ -1,0 +1,49 @@
+interface types {
+
+    /**
+     * Represents a record DDelta Request 
+     * - currency: The currency to be used
+     * - dates: The dates to get deltas, None means any available time near today
+     */
+    record ddelta-request {
+        currency: string,
+        dates: option<list<string>>
+    }
+
+    /**
+     * Represents a record DDelta response
+     * - code: Response code
+     * - message: Response message
+     * - data: ddelta data
+     */
+    record ddelta-response {
+        code: s8,
+        message: string,
+        data: ddelta
+    }
+
+    /**
+     * Represents a record DDelta
+     * - currency: The currency to be used
+     * - ddelta-percentage: Generated bump percentage
+     * - bumped-spot: Generated bump spot
+     * - ddelta-data: Main ddelta data base on spot bumps
+     */
+    record ddelta {
+        currency: string,
+        ddelta-percentage: list<f64>,
+        bumped-spot: list<f64>,
+        ddelta-data: list<ddelta-data>
+    }
+    /**
+     * Represents a record DDelta data
+     * - instrument-name: Instrument name particular
+     * - option-type: Call or Put
+     * - deltas: list delta values
+     */
+    record ddelta-data {
+        instrument-name: string,
+        option-type: string,
+        deltas: list<f64>
+    }
+}

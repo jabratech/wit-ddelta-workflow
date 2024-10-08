@@ -1,0 +1,5 @@
+package jabratech:ddelta-common;
+
+world ddelta {
+    export handler;
+}

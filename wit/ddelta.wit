@@ -1,0 +1,6 @@
+interface handler {
+    use jabratech:common/types.{response};
+    use types.{ddelta-request, ddelta-response};
+
+    get-data: func(ddelta-request: ddelta-request) -> result<ddelta-response, response>;
+}
